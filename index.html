@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Arts Hub | Scotto di Vettimo & Pierno</title>
+    <style>
+        /* DESIGN SYSTEM IN STILE APPLE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* STRUTTURA SPLIT-SCREEN */
+        .split-container {
+            display: flex;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* SINGOLO LATO */
+        .portfolio-side {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 60px;
+            text-decoration: none;
+            color: #ffffff;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: flex 0.8s cubic-bezier(0.25, 1, 0.25, 1);
+        }
+
+        /* GRADIENTE DI SFONDO E TRANSIZIONE IMMAGINE */
+        .portfolio-side::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        /* --- IMMAGINI DI SFONDO --- */
+        .photo-side {
+            background-image: url('paolo.jpg');
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-side {
+            background-image: url('mattia.jpg');
+        }
+
+        /* CONTENITORE TESTO CON EFFETTO SFOCATURA CRISTALLO (GLASSMORPHISM) */
+        .text-content {
+            position: relative;
+            z-index: 2;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.25, 1);
+            transform: translateY(0);
+        }
+
+        /* TIPOGRAFIA APPLE STYLE */
+        .text-content h2 {
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            margin-bottom: 4px;
+            color: #ffffff;
+        }
+
+        .text-content h3 {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            color: #86868b;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        /* CALL TO ACTION BOTTONE MINIMALE */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 22px;
+            background-color: #ffffff;
+            color: #000000;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: -0.1px;
+            transition: all 0.3s ease;
+        }
+
+        /* INTERAZIONI E ANIMAZIONI MOUSE (DESKTOP) */
+        @media (min-width: 769px) {
+            .portfolio-side:hover {
+                flex: 1.4;
+            }
+
+            .portfolio-side:hover .text-content {
+                background: rgba(255, 255, 255, 0.06);
+                border-color: rgba(255, 255, 255, 0.15);
+                transform: translateY(-5px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            }
+
+            .portfolio-side:hover .cta-button {
+                background-color: rgba(255, 255, 255, 0.9);
+                transform: scale(1.02);
+            }
+            
+            .split-container:hover .portfolio-side:not(:hover)::before {
+                background: rgba(0, 0, 0, 0.8);
+            }
+        }
+
+        /* OTTIMIZZAZIONE SMARTPHONE (LAYOUT VERTICALE) */
+        @media (max-width: 768px) {
+            .split-container {
+                flex-direction: column;
+            }
+
+            .portfolio-side {
+                width: 100%;
+                height: 50%;
+                padding: 30px;
+                justify-content: flex-end;
+            }
+
+            .photo-side {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .text-content {
+                padding: 20px;
+                border-radius: 14px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .text-content h2 {
+                font-size: 1.4rem;
+            }
+
+            .text-content h3 {
+                font-size: 0.85rem;
+                margin-bottom: 16px;
+            }
+            
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="split-container">
+        
+        <a href="https://www.paoloscotto.it" target="_blank" class="portfolio-side photo-side">
+            <div class="text-content">
+                <h2>Paolo Scotto di Vettimo</h2>
+                <h3>Photographer</h3>
+                <span class="cta-button">Scopri il portfolio</span>
+            </div>
+        </a>
+
+        <a href="https://www.mattiapierno.it" target="_blank" class="portfolio-side video-side">
+            <div class="text-content">
+                <h2>Mattia Pierno</h2>
+                <h3>Director</h3>
+                <span class="cta-button">Scopri il portfolio</span>
+            </div>
+        </a>
+
+    </div>
+
+</body>
+</html>
